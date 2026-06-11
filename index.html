@@ -3,76 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una sorpresa mágica para ti</title>
+    <title>Una sorpresa muy especial 🥭</title>
     <style>
-        /* Estilos generales con tonos rosa pastel y románticos */
+        /* Fondo cálido inspirado en los tonos de un mango maduro y romántico */
         body { 
             text-align: center; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #fdf2f8; 
+            background-color: #fffbeb; 
             margin: 0;
-            padding: 40px 20px;
+            padding: 30px 10px;
             color: #333;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         h1 {
-            color: #9d174d;
-            font-size: 24px;
-            margin-bottom: 10px;
+            color: #d97706;
+            font-size: 26px;
+            margin-bottom: 5px;
         }
 
         .subtitulo {
-            color: #6b7280;
+            color: #b45309;
             font-size: 14px;
             font-style: italic;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        /* Estilo y animación del mago */
-        #maguito { 
-            font-size: 90px; 
+        /* El Mango Interactivo */
+        #mango { 
+            font-size: 95px; 
             cursor: pointer; 
             display: inline-block;
             transition: transform 0.3s ease;
             user-select: none;
         }
         
-        #maguito:hover { 
-            transform: scale(1.15) rotate(5deg); 
+        #mango:hover { 
+            transform: scale(1.18) rotate(-8deg); 
         }
 
-        /* Estilo de la carta oculta */
-        #carta { 
-            display: none; 
-            margin-top: 20px; 
-            padding: 30px; 
-            background: white; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(157, 23, 77, 0.1); 
-            border: 1px solid #fbcfe8;
-            text-align: left;
+        /* Estructura para mostrar la carta con fotos a los lados */
+        #seccion-sorpresa {
+            display: none;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            margin-top: 20px;
         }
 
-        /* Título interno de la carta */
-        #carta h2 {
-            color: #9d174d;
-            font-size: 20px;
+        /* Tabla contenedora para alinear imágenes a los lados en pantallas grandes */
+        .layout-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .columna-foto {
+            width: 25%;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .columna-carta {
+            width: 50%;
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        /* Estilo de las fotos decorativas */
+        .foto-decorativa {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            transition: transform 0.3s;
+            margin: 15px auto;
+            display: block;
+        }
+
+        .foto-decorativa:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        /* Estilo de la carta */
+        .carta-contenido { 
+            padding: 35px 30px; 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.12); 
+            border: 1px solid #fde68a;
+            text-align: left;
+        }
+
+        .carta-contenido h2 {
+            color: #d97706;
+            font-size: 21px;
             text-align: center;
             margin-top: 0;
-            border-bottom: 1px dashed #fbcfe8;
+            border-bottom: 1px dashed #fde68a;
             padding-bottom: 15px;
         }
 
-        /* Cuerpo del mensaje */
-        #carta p {
+        .carta-contenido p {
             font-size: 16px;
             line-height: 1.7;
             color: #4b5563;
@@ -80,14 +117,26 @@
             margin-bottom: 15px;
         }
 
-        /* Firma final */
         .firma {
             text-align: right;
             font-weight: bold;
-            color: #9d174d;
-            margin-top: 30px;
+            color: #d97706;
+            margin-top: 35px;
             font-size: 17px;
             line-height: 1.4;
+        }
+
+        /* Ajuste para que en celulares las fotos se acomoden arriba y abajo en vez de a los lados */
+        @media (max-width: 768px) {
+            .layout-tabla, .layout-tabla tbody, .layout-tabla tr, .layout-tabla td {
+                display: block;
+                width: 100% !important;
+            }
+            .foto-decorativa {
+                display: inline-block;
+                width: 45%;
+                margin: 5px;
+            }
         }
     </style>
 </head>
@@ -95,38 +144,54 @@
 
     <div class="container">
         <div id="interactivo">
-            <h1>¡Toca al maguito para ver tu sorpresa!</h1>
-            <p class="subtitulo">(Ha preparado un hechizo especial por tu logro)</p>
-            <div id="maguito" onclick="abrirCarta()">🧙‍♂️</div>
+            <h1>¡Haz click en el mango para ver tu sorpresa! 🥭</h1>
+            <p class="subtitulo">(Tiene un mensaje muy dulce guardado para ti)</p>
+            <div id="mango" onclick="abrirCarta()">🥭</div>
         </div>
         
-        <div id="carta">
-            <h2>¡Felicitaciones por tu segundo semestre! ❤️</h2>
-            
-            <p>¡Felicitaciones por haber terminado otro semestre más de la única manera que sabes hacerlo: con excelencia! Sé que se presentaron complicaciones en el camino, pero tú siempre demuestras que puedes con cualquier reto que se te ponga enfrente.</p>
-            
-            <p>Siempre seré la persona más feliz y orgullosa de ver cómo continúas demostrando lo inteligente que eres, y cómo cada día te conviertes en esa gran mujer que sé que vas a llegar a ser. Te amo con todo mi ser; me llenas de alegría cada pedazo del corazón y me haces inmensamente feliz cada día al pensar en la maravillosa persona en la que te estás transformando.</p>
-            
-            <div class="firma">
-                Con muchísimo cariño,<br>
-                Tu perro Bluetooth 🐾
-            </div>
+        <div id="seccion-sorpresa">
+            <table class="layout-tabla">
+                <tr>
+                    <td class="columna-foto">
+                        <img src="https://i.postimg.cc/pVFhs2cW/ramo.png" class="foto-decorativa" alt="Ramo de flores">
+                    </td>
+                    
+                    <td class="columna-carta">
+                        <div class="carta-contenido">
+                            <h2>¡Felicitaciones por tu segundo semestre! ❤️</h2>
+                            
+                            <p>Felicitaciones por haber terminado otro semestre más de la única manera que sabes hacerlo bien. Sé que pasaron cosas durante el semestr, pero tú siempre demuestras que puedes con cualquier cosa que se te ponga enfrente.</p>
+                            
+                            <p>Siempre seré la persona más feliz y orgullosa de ver cómo continúasax demostrando lo inteligente que eres, y cómo cada día te conviertes en esa gran mujer que sé que vas a llegar a ser. Te amo con todo mi ser me llenas de alegría mi mitad de corazón y me haces inmensamente feliz cada día al pensar en la mujer en la que te estás transformando.</p>
+                            
+                            <div class="firma">
+                                Con amor,<br>
+                                Tu perro Bluetooth 🐾
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="columna-foto">
+                        <img src="https://i.postimg.cc/BnYnqyws/Captura-desde-2026-06-11-18-44-17.png" class="foto-decorativa" alt="Momento juntos">
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <script>
         function abrirCarta() {
-            var maguitoSeccion = document.getElementById('interactivo');
-            var carta = document.getElementById('carta');
+            var interactivo = document.getElementById('interactivo');
+            var sorpresa = document.getElementById('seccion-sorpresa');
             
-            // Ocultamos la sección del mago suavemente
-            maguitoSeccion.style.display = 'none';
+            // Esconder el botón del mango
+            interactivo.style.display = 'none';
             
-            // Mostramos la carta con animación
-            carta.style.display = 'block';
+            // Mostrar la estructura con animación suave
+            sorpresa.style.display = 'block';
             setTimeout(function() {
-                carta.style.opacity = '1';
-                carta.style.transform = 'translateY(0)';
+                sorpresa.style.opacity = '1';
+                sorpresa.style.transform = 'translateY(0)';
             }, 50);
         }
     </script>
