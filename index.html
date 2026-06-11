@@ -126,7 +126,65 @@
             line-height: 1.4;
         }
 
-        /* Ajuste para que en celulares las fotos se acomoden arriba y abajo en vez de a los lados */
+        /* --- NUEVOS ESTILOS PARA EL REGALO Y LOS GIRASOLES --- */
+        .contenedor-regalo {
+            text-align: center;
+            margin-top: 25px;
+            border-top: 1px dashed #fde68a;
+            padding-top: 20px;
+        }
+
+        #boton-regalo {
+            font-size: 50px;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            user-select: none;
+        }
+
+        #boton-regalo:hover {
+            transform: scale(1.2) translateY(-5px);
+        }
+
+        .texto-regalo {
+            font-size: 14px;
+            color: #b45309;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        #seccion-girasoles {
+            display: none;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .girasoles-emoji {
+            font-size: 70px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        .frase-romantica {
+            font-family: 'Georgia', serif;
+            font-size: 18px;
+            color: #b45309;
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Ajuste para celulares */
         @media (max-width: 768px) {
             .layout-tabla, .layout-tabla tbody, .layout-tabla tr, .layout-tabla td {
                 display: block;
@@ -160,14 +218,29 @@
                         <div class="carta-contenido">
                             <h2>¡Felicitaciones por tu segundo semestre! ❤️</h2>
                             
-                            <p>Felicitaciones por haber terminado otro semestre más de la única manera que sabes hacerlo bien. Sé que pasaron cosas durante el semestr, pero tú siempre demuestras que puedes con cualquier cosa que se te ponga enfrente.</p>
+                            <p>Felicitaciones por haber terminado otro semestre más de la única manera que sabes hacerlo bien. Sé que pasaron cosas durante el semestre, pero tú siempre demuestras que puedes con cualquier cosa que se te ponga enfrente.</p>
                             
-                            <p>Siempre seré la persona más feliz y orgullosa de ver cómo continúasax demostrando lo inteligente que eres, y cómo cada día te conviertes en esa gran mujer que sé que vas a llegar a ser. Te amo con todo mi ser me llenas de alegría mi mitad de corazón y me haces inmensamente feliz cada día al pensar en la mujer en la que te estás transformando.</p>
+                            <p>Siempre seré la persona más feliz y orgullosa de ver cómo continúas demostrando lo inteligente que eres, y cómo cada día te conviertes en esa gran mujer que sé que vas a llegar a ser. Te amo con todo mi ser me llenas de alegría mi mitad de corazón y me haces inmensamente feliz cada día al pensar en la mujer en la que te estás transformando.</p>
                             
                             <div class="firma">
                                 Con amor,<br>
                                 Tu perro Bluetooth 🐾
                             </div>
+
+                            <div class="contenedor-regalo">
+                                <div id="bloque-regalo-click">
+                                    <div id="boton-regalo" onclick="abrirRegalo()">🎁</div>
+                                    <div class="texto-regalo">Pst... haz click aquí, tengo un regalo extra para ti</div>
+                                </div>
+
+                                <div id="seccion-girasoles">
+                                    <div class="girasoles-emoji">🌻💐🌻</div>
+                                    <div class="frase-romantica">
+                                        "Te amaré hasta que la última de estas flores muera."
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </td>
                     
@@ -184,14 +257,26 @@
             var interactivo = document.getElementById('interactivo');
             var sorpresa = document.getElementById('seccion-sorpresa');
             
-            // Esconder el botón del mango
             interactivo.style.display = 'none';
-            
-            // Mostrar la estructura con animación suave
             sorpresa.style.display = 'block';
             setTimeout(function() {
                 sorpresa.style.opacity = '1';
                 sorpresa.style.transform = 'translateY(0)';
+            }, 50);
+        }
+
+        function abrirRegalo() {
+            var bloqueRegalo = document.getElementById('bloque-regalo-click');
+            var girasoles = document.getElementById('seccion-girasoles');
+            
+            // Ocultamos la caja de regalo
+            bloqueRegalo.style.display = 'none';
+            
+            // Mostramos los girasoles con animación suave
+            girasoles.style.display = 'block';
+            setTimeout(function() {
+                girasoles.style.opacity = '1';
+                girasoles.style.transform = 'scale(1)';
             }, 50);
         }
     </script>
